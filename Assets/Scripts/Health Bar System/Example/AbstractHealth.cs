@@ -1,21 +1,20 @@
 ﻿using System;
 using UnityEngine;
 
-public class Health : IHealthChangable
+public abstract class AbstractHealth
 {
-    private readonly int _maxValue;
-    private int _currentValue;
+    private readonly float _maxValue;
+    private float _currentValue;
 
-    public Health(int currentValue, int maxValue)
+    public AbstractHealth(float currentValue, float maxValue)
     {
         _currentValue = currentValue;
         _maxValue = maxValue;
     }
 
-    public float CurrentValue => _currentValue;
     public float MaxValue => _maxValue;
 
-    public event Action<float, float> Changed;
+    public event Action<float> Changed;
 
     public void Heal(int value)
     {
@@ -24,7 +23,7 @@ public class Health : IHealthChangable
 
         _currentValue += value;
 
-        ValueChanged();
+        OnValueChanged();
     }
 
     public void Damage(int value)
@@ -34,12 +33,12 @@ public class Health : IHealthChangable
 
         _currentValue -= value;
 
-        ValueChanged();
+        OnValueChanged();
     }
 
-    public void ValueChanged()
+    public void OnValueChanged()
     {
         _currentValue = Mathf.Clamp( _currentValue, 0, _maxValue );
-        Changed?.Invoke(_currentValue, _maxValue);
+        Changed?.Invoke(_currentValue);
     }
 }

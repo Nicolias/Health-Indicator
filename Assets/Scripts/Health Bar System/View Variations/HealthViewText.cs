@@ -4,7 +4,7 @@ using UnityEngine;
 namespace HealthView
 {
     [RequireComponent(typeof(TMP_Text))]
-    public sealed class TextHealthBar : AbstractHealthBar
+    public sealed class HealthViewText : AbstractHealthView
     {
         private TMP_Text _healthBarText;
 
@@ -13,9 +13,9 @@ namespace HealthView
             _healthBarText = GetComponent<TMP_Text>();    
         }
 
-        protected override void OnHealthChanged(float currentHealth, float maxHealth)
+        protected override void OnHealthChanged(float currentHealth)
         {
-            _healthBarText.text = $"{currentHealth}/{maxHealth}";
+            _healthBarText.text = $"{currentHealth}/{MaxHealth}";
         }
     }
 }

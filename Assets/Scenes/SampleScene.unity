@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5486beda9d701409dec00f053c506b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fillSpeed: 0.2
+  _fillSpeed: 1
 --- !u!114 &280841253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1645173438}
   m_FillRect: {fileID: 1931760254}
   m_HandleRect: {fileID: 1645173437}
@@ -664,7 +664,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 901817303}
   m_FillRect: {fileID: 2023573921}
   m_HandleRect: {fileID: 901817301}
@@ -998,8 +998,9 @@ MonoBehaviour:
   - {fileID: 1296841888}
   - {fileID: 520707825}
   - {fileID: 280841252}
-  _damageValue: 10
-  _healValue: 10
+  _healthValue: 50
+  _damageValue: 5
+  _healValue: 5
 --- !u!1 &1124805851
 GameObject:
   m_ObjectHideFlags: 0

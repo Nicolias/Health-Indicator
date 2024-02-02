@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class HealthBarExample : MonoBehaviour
 {
-    [SerializeField] private List<AbstractHealthBar> _healthBars;
+    [SerializeField] private List<AbstractHealthView> _healthBars;
+
+    [SerializeField] private int _healthValue;
 
     [SerializeField] private int _damageValue;
     [SerializeField] private int _healValue;
 
-    private Health _health;
+    private AbstractHealth _health;
 
     private void Awake()
     {
-        _health = new Health(100, 100);   
+        _health = new ExampleHealth(_healthValue, _healthValue);   
     }
-    
+
     private void Start()
     {
         _healthBars.ForEach(bar => bar.Initialize(_health));
