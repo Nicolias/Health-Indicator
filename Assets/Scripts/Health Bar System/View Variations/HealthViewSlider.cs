@@ -4,19 +4,22 @@ using UnityEngine.UI;
 namespace HealthView
 {
     [RequireComponent(typeof(Slider))]
-    public sealed class HealthViewSlider : AbstractHealthView
+    public class HealthViewSlider : AbstractHealthView
     {
-        private Slider _healthBarSlider;
+        protected Slider HealthBarSlider;
 
-        protected override void OnInitialized()
+        protected sealed override void OnInitialized()
         {
-            _healthBarSlider = GetComponent<Slider>();
-            _healthBarSlider.maxValue = MaxHealth;
+            HealthBarSlider = GetComponent<Slider>();
+
+            HealthBarSlider.minValue = 0;
+            HealthBarSlider.value = MaxHealth;
+            HealthBarSlider.maxValue = MaxHealth;
         }
 
         protected override void OnHealthChanged(float currentHealth)
         {
-            _healthBarSlider.value = currentHealth;
+            HealthBarSlider.value = currentHealth;
         }
     }
 }

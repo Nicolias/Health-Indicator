@@ -5,19 +5,11 @@ using UnityEngine.UI;
 namespace HealthView
 {
     [RequireComponent (typeof(Slider))]
-    public sealed class HealtViewSmoothSlider : AbstractHealthView
+    public sealed class HealtViewSmoothSlider : HealthViewSlider
     {
         [SerializeField] private float _fillSpeed;
 
-        private Slider _healthBarSlider;
         private Coroutine _fillHealthBar;
-
-        protected override void OnInitialized()
-        {
-            _healthBarSlider = GetComponent<Slider>();
-            _healthBarSlider.minValue = 0;
-            _healthBarSlider.maxValue = MaxHealth;
-        }
 
         protected override void OnHealthChanged(float currentHealth)
         {
@@ -31,14 +23,15 @@ namespace HealthView
         {
             float finalvalue = currentHealth / MaxHealth; 
 
-            while (_healthBarSlider.normalizedValue != finalvalue)
+            while (HealthBarSlider.normalizedValue != finalvalue)
             {
-                _healthBarSlider.normalizedValue = Mathf.MoveTowards
+                HealthBarSlider.normalizedValue = Mathf.MoveTowards
                 (
-                    _healthBarSlider.normalizedValue,
+                    HealthBarSlider.normalizedValue,
                     finalvalue,
                     _fillSpeed * Time.deltaTime
                 );
+
                 yield return null;
             }
         }
