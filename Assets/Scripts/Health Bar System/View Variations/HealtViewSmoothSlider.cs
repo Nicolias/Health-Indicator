@@ -21,14 +21,14 @@ namespace HealthView
 
         private IEnumerator FillHealthBar(float currentHealth)
         {
-            float finalvalue = currentHealth / MaxHealth; 
+            float currentHealthNormolized = currentHealth / MaxHealth; 
 
-            while (HealthBarSlider.normalizedValue != finalvalue)
+            while (HealthBarSlider.normalizedValue != currentHealthNormolized)
             {
                 HealthBarSlider.normalizedValue = Mathf.MoveTowards
                 (
                     HealthBarSlider.normalizedValue,
-                    finalvalue,
+                    currentHealthNormolized,
                     _fillSpeed * Time.deltaTime
                 );
 
